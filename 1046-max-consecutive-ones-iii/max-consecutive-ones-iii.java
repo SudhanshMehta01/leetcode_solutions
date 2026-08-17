@@ -23,7 +23,7 @@ class Solution {
         int zero=0;
         for(int right =0;right<n;right++){
             if(arr[right]==0) zero++;
-            while(zero>k){
+            if(zero>k){
                 if(arr[left]==0) zero--;
                 left++;
             }
