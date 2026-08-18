@@ -12,7 +12,7 @@ class Solution {
         }
         int count=0;
         for(int i=0;i<n;i++){
-            if(brr[i]!=0) count++;
+            if(arr[i]!=0) count++;
         }
         return count;
        
