@@ -1,28 +1,16 @@
 class Solution {
-    public int specialArray(int[] arr) {
-
-        int n = arr.length;
-
-        // Har possible x ko check karo
-        for(int x = 1; x <= n; x++) {
-
-            int count = 0;
-
-            // Count karo kitne elements >= x hain
-            for(int i = 0; i < n; i++) {
-
-                if(arr[i] >= x) {
-                    count++;
-                }
-            }
-
-            // Agar exactly x elements >= x hain
-            if(count == x) {
-                return x;
-            }
+    public int specialArray(int[] nums) {
+        int n=nums.length;
+        for(int i=0;i<=n;i++){
+            int count=0;
+            for(int num:nums){
+                if(num>=i)
+            count++;
         }
-
-        // Koi special x nahi mila
-        return -1;
+        if(count==i){
+           return i;
+        }
+        }
+      return -1;  
     }
 }
