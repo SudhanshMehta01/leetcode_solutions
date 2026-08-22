@@ -1,35 +1,36 @@
 import java.util.HashSet;
-import java.util.Set;
 
 class Solution {
-    public int longestConsecutive(int[] nums) {
-        if (nums.length == 0) {
-            return 0;
-        }
-        
-        Set<Integer> numSet = new HashSet<>();
-        for (int num : nums) {
-            numSet.add(num);
+    public int longestConsecutive(int[] arr) {
+
+        HashSet<Integer> set = new HashSet<>();
+
+        // Saare elements Set mein daalo
+        for(int i = 0; i < arr.length; i++) {
+            set.add(arr[i]);
         }
 
-        int longestStreak = 0;
+        int max = 0;
 
-        for (int num : numSet) {
-            // Check if 'num' is the start of a sequence
-            if (!numSet.contains(num - 1)) {
-                int currentNum = num;
-                int currentStreak = 1;
-                
-                // Count how long the streak is
-                while (numSet.contains(currentNum + 1)) {
-                    currentNum++;
-                    currentStreak++;
+        // Unique elements ko traverse karo
+        for(int current : set) {
+
+            // Previous number nahi hai
+            // Matlab current sequence ka starting point hai
+            if(!set.contains(current - 1)) {
+
+                int count = 1;
+
+                // Next consecutive numbers check karo
+                while(set.contains(current + 1)) {
+                    current++;
+                    count++;
                 }
-                
-                longestStreak = Math.max(longestStreak, currentStreak);
+
+                max = Math.max(max, count);
             }
         }
-        
-        return longestStreak;
+
+        return max;
     }
 }
