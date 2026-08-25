@@ -3,13 +3,14 @@ class Solution {
 
         int n = piles.length;
 
+        // Maximum pile find karna
         int max = 0;
 
-        // Maximum pile find karo
-        for(int a = 0; a < n; a++) {
-            max = Math.max(max, piles[a]);
+        for(int i = 0; i < n; i++) {
+            max = Math.max(max, piles[i]);
         }
 
+        // Eating speed ki range: 1 to max
         int i = 1;
         int j = max;
 
@@ -17,23 +18,27 @@ class Solution {
 
         while(i <= j) {
 
+            // Current possible eating speed
             int mid = i + (j - i) / 2;
 
             long hours = 0;
 
+            // Is speed par total kitne hours lagenge
             for(int a = 0; a < n; a++) {
-                hours += (piles[a] + mid - 1) / mid;
+                hours += (long)Math.ceil((double)piles[a] / mid);
             }
 
             if(hours <= h) {
 
-                // Speed possible hai
+                // Ye speed possible hai
                 ans = mid;
+
+                // Aur kam speed try karo
                 j = mid - 1;
             }
             else {
 
-                // Speed slow hai
+                // Speed bahut slow hai
                 i = mid + 1;
             }
         }
