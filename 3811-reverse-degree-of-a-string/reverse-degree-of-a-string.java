@@ -4,9 +4,8 @@ class Solution {
         int ans =0;
         for(int i=0;i<n;i++){
             char c = s.charAt(i);
-            int org = c - 'a' + 1;
-            int ok = 27 - org;
-            ans += ok*(i+1);
+            int val = Math.abs(c - 'z');
+            ans += (val+1) *(i+1);
         }
         return ans;
         
